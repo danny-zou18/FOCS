@@ -1,0 +1,368 @@
+\documentclass[11pt]{article}
+\usepackage{datetime}
+\usepackage{color,array,graphics}
+\usepackage{enumerate}
+\usepackage[pdftex, colorlinks, linkcolor=red,citecolor=red,urlcolor=blue]{hyperref}
+\usepackage{ulem}
+
+\setlength{\parindent}{0cm}
+
+\setlength{\parskip}{0.3cm plus4mm minus3mm}
+
+\textwidth  6.5in
+\oddsidemargin +0.0in
+\evensidemargin +0.0in
+\textheight 9.0in
+\topmargin -0.5in
+
+\usepackage{upquote,textcomp}
+\usepackage{amssymb,amsmath,amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\newcommand{\vect}[1]{{\bf #1}}                 %for bold chars
+\newcommand{\vecg}[1]{\mbox{\boldmath $ #1 $}}  %for bold greek chars
+\newcommand{\matx}[1]{{\bf #1}}
+
+\def\OR{\vee}
+\def\AND{\wedge}
+\def\imp{\rightarrow}
+\def\math#1{$#1$}
+
+\DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+\DeclareMathSymbol{\N}{\mathbin}{AMSb}{"4E}
+\DeclareMathSymbol{\Z}{\mathbin}{AMSb}{"5A}
+\DeclareMathSymbol{\R}{\mathbin}{AMSb}{"52}
+\DeclareMathSymbol{\Q}{\mathbin}{AMSb}{"51}
+\DeclareMathSymbol{\I}{\mathbin}{AMSb}{"49}
+\DeclareMathSymbol{\C}{\mathbin}{AMSb}{"43}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+\large
+\textbf{CSCI 2200 --- Foundations of Computer Science (FoCS) \\
+Homework 2 (document version 1.0)}
+\end{center}
+
+\section*{Overview}
+\begin{itemize}
+\item This homework is due by 11:59PM on Thursday, September~28
+\item You may work on this homework in a group of up to four students;
+  unlike recitation problem sets,
+  \textbf{your teammates may be in any section}
+\item You may use at most \textbf{two} late days on this assignment
+\item Please start this homework early and ask questions during
+  office hours; % and at your September~13 recitation section;
+  also ask questions on the Discussion Forum
+\item Please be concise in your written answers;
+  even if your solution is correct, if it is not well-presented,
+  you may still lose points
+\item You can type or hand-write (or both) your solutions
+  to the required graded problems below;
+  \textbf{all work must be organized in one PDF that lists
+  all teammate names}
+\item You are strongly encouraged to use LaTeX, in particular for
+  mathematical symbols;
+  see the corresponding \verb+hw1.tex+ file as a starting point
+  and example
+\end{itemize}
+
+%\vspace{0.2in}
+
+\section*{Grading}
+\begin{itemize}
+\item For each assigned problem, a grade of 0, 1, or 2 is assigned
+  as follows:
+  0 indicates no credit;
+  1 indicates half credit;
+  and 2 indicates full credit
+\item No credit is assigned if a problem is not attempted
+  or minimal work/progress is shown
+\item Half credit is assigned if a strong attempt was made
+  toward a solution and/or only part of the problem was attempted or solved
+\item Full credit is assigned for a perfect or nearly perfect solution,
+  i.e.,~only one or two minor typos/mistakes at most
+\end{itemize}
+
+\vspace{0.2in}
+\newpage
+\section*{Warm-up exercises}
+The problems below are good practice problems to work on.
+Do not submit these as part of your homework submission.
+\textbf{These are ungraded problems.}
+
+\begin{multicols}{2}
+\begin{itemize}
+
+\item \textbf{Problem 3.32.}
+\item \textbf{Problem 3.49.}
+\item \textbf{Problem 4.11.}
+\item \textbf{Problem 4.14.}
+\item \textbf{Problem 4.16.}
+\item \textbf{Problem 4.47.}
+\item \textbf{Problem 4.48(c).} (See Problem 4.47.)
+\item \textbf{Problem 5.10.}
+\item \textbf{Problem 6.3(a).}
+\item \textbf{Problem 6.15.}
+\item \textbf{Problem 6.32.}
+\item \textbf{Problem 7.3.}
+\item \textbf{Problem 7.4(a-c).} \\
+(In each subproblem, remove the recursion in your formula for $A_n$.)
+
+\end{itemize}
+\end{multicols}
+
+\section*{Graded problems}
+The problems below are required and will be graded.
+\begin{itemize}
+
+\item \textbf{*Problem 3.59 (Closure).}
+\item \textbf{*Problem 4.10(k-l).}
+\item \textbf{*Problem 5.12(d).}
+\item \textbf{*Problem 5.20.}
+\item \textbf{*Problem 5.39.}
+\item \textbf{*Problem 6.8.}
+\item \textbf{*Problem 6.43.}
+
+\end{itemize}
+
+As you might not have the required textbook yet,
+all of the above problems (both graded and ungraded)
+are transcribed in the pages that follow.
+
+Graded problems are noted with an asterisk~(*).
+
+If any typos exist below, please use the textbook description.
+
+\newpage
+\begin{itemize}
+
+\item \textbf{Problem 3.32.}
+  Use truth tables to verify the rules for derivations in Figure~3.1 on page~29.
+  Now use the rules in Figure~3.1 to show logical equivalence
+  $$\neg((p\AND q)\OR r)\overset{\text{eqv}}{\ \equiv\ }(\neg p\AND\neg r)\OR(\neg q\AND \neg r)\text{.}$$
+
+\vspace{0.1in}
+
+\item \textbf{Problem 3.49.}
+  What is the difference between
+  $$\forall x: (\neg\exists y: P(x)\imp Q(y))\ \ \text{and}\ \ \neg\exists y: (\forall x: P(x)\imp Q(y))\text{?}$$
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 3.59 (Closure).}
+  A set $\mathcal{S}$ is closed under an operation if performing that
+  operation on elements of $\mathcal{S}$ returns an element in $\mathcal{S}$.
+  Here are five examples of closure.
+
+  \begin{center}
+  $\mathcal{S}$ is closed under addition $\imp$
+  $\forall(x,y)\in\mathcal{S}^2: x+y\in\mathcal{S}$.
+
+  $\mathcal{S}$ is closed under subtraction $\imp$
+  $\forall(x,y)\in\mathcal{S}^2: x-y\in\mathcal{S}$.
+
+  $\mathcal{S}$ is closed under multiplication $\imp$
+  $\forall(x,y)\in\mathcal{S}^2: xy\in\mathcal{S}$.
+
+  $\mathcal{S}$ is closed under division $\imp$
+  $\forall(x,y\ne 0)\in\mathcal{S}^2: x/y\in\mathcal{S}$.
+
+  $\mathcal{S}$ is closed under exponentiation $\imp$
+  $\forall(x,y)\in\mathcal{S}^2: x^y\in\mathcal{S}$.
+  \end{center}
+
+  Which of the five operations are the following sets closed under?
+  (a)~$\N$.
+  (b)~$\Z$.
+  (c)~$\Q$.
+  (d)~$\R$.
+
+  \subsubsection*{(a)~Natural Numbers}
+  \begin{itemize}
+    \item Closed Under Addition - Sum of two natural numbers will always be another natural number
+    \item Not Closed Under Subtraction - Difference of two natural numbers will not always be another natural number (i.e., 9 - 12 = -3)
+    \item Closed Under Multiplication - Product of two natural numbers will always be another natural number
+    \item Not Closed Under Division - Quotient of two natural numbers will not always be another natural number (i.e., 9/2 = 4.5 )
+    \item Closed Under Exponentiation - A natural number to the power of another natural number will always result in a positive integer, making it natural.
+  \end{itemize}
+  \subsubsection*{(b)~Integers}
+  \begin{itemize}
+    \item Closed Under Addition - Sum of two integers will always be another integer
+    \item Closed Under Subtraction - Difference of two natural numbers will always be another integer
+    \item Closed Under Multiplication - Product of two integers will always be another integer
+    \item Not Closed Under Division - Quotient of two integers will not always be another integer (i.e., 9/2 = 4.5 )
+    \item Not Closed Under Exponentiation - A integer to the power of another integer will not always result in another integer (i.e., \(2^{-3}\) = 0.125)
+  \end{itemize}
+  \subsubsection*{(c)~Rational Numbers}
+  \begin{itemize}
+    \item Closed Under Addition - Sum of two rational numbers will always be another rational number
+    \item Closed Under Subtraction - Difference of two rational numbers will always be another rational number
+    \item Closed Under Multiplication - Product of two rational numbers will always be another rational number 
+    \item Closed Under Division - Quotient of two rational numbers will always be another rational number
+    \item Not Closed Under Exponentiation - A rational number to the power of another rational number will not always result in another rational number (i.e., \(\left(2\right)^{\frac{1}{2}} = \sqrt{2}\))
+  \end{itemize}
+  \subsubsection*{(d)~Real Numbers}
+  \begin{itemize}
+    \item Closed Under Addition - Sum of two rational numbers will always be another rational number
+    \item Closed Under Subtraction - Difference of two rational numbers will always be another rational number
+    \item Closed Under Multiplication - Product of two rational numbers will always be another rational number 
+    \item Closed Under Division - Quotient of two rational numbers will always be another rational number
+    \item Not Closed Under Exponentiation - A rational number to the power of another rational number will not always result in another rational number (i.e., \(\left(2\right)^{\frac{1}{2}} = \sqrt{2}\))
+  \end{itemize}
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 4.10(k-l).}
+  You may assume $n$ is an integer.
+  Prove by contraposition (explicitly state the contrapositive).
+  \begin{enumerate}[(a)]
+  \setcounter{enumi}{10}
+  \item 3 divides $n-2\imp n$ is not a perfect square.
+  \item If $p>2$ is prime, then $p^2+1$ is composite.
+  \end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{Problem 4.11.}
+  For $x,y\in\N$, which statements below are contradictions (cannot possibly be true).
+  Explain.
+%  \begin{multicols}{2}
+  \begin{enumerate}[(a)]
+  \item $x^2<y$.
+  \item $x^2=y/2$.
+  \item $x^2-y^2\le 1$.
+  \item $x^2+y^2\le 1$.
+  \item $2x+1=y^2+5y$.
+  \item $x^2-y^2/2=1$.
+  \item $x^2-y^2=1$.
+  \end{enumerate}
+%  \end{multicols}
+
+\vspace{0.1in}
+
+\item \textbf{Problem 4.14.}
+  Prove: If $a,b,c\in\Z$ are odd, then for all $x\in\Q$,
+  $ax^2+bx+c\ne 0$.
+  (Contradiction in a direct proof.)
+
+\newpage
+
+%\item \textbf{Problem 4.16.}
+
+\item \textbf{Problem 4.47 (Without Loss of Generality (wlog)).}
+  Consider the following claim.
+  \begin{center}
+  If $x$ and $y$ have opposite parity (one is odd and one is even),
+  then $x+y$ is odd.
+  \end{center}
+  Explain why, in a direct proof, we may assume that $x$ is odd and $y$ is even?
+  Prove the claim.
+  (Such a proof starts ``Without loss of generality, assume $x$ is odd and $y$ is even.
+  Then, $\ldots$'')
+
+\vspace{0.1in}
+
+\item \textbf{Problem 4.48(c).}
+  Use the concept of ``without loss of generality'' to prove these claims.
+  \begin{enumerate}[(a)]
+  \setcounter{enumi}{2}
+  \item For any non-zero real number $x$, $x^2+1/x^2\ge 2$.
+  \end{enumerate}
+
+\vspace{0.1in}
+
+%\item \textbf{Problem 5.10.}
+
+\item \textbf{*Problem 5.12(d).}
+  For $n\ge 1$, prove by induction:
+  \begin{enumerate}[(a)]
+  \setcounter{enumi}{3}
+  \item $3^n>n^2$.
+  \end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 5.20.}
+  Prove, by induction, that every $n\ge 1$ is a sum of distinct powers of~2.
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 5.39.}
+  Prove you can make any postage greater than 12\textcent\
+  using only 4\textcent\  and 5\textcent\  stamps.
+  (The USPS can set any postage above 12\textcent\  and you don't have to buy any new stamps.)
+
+\vspace{0.1in}
+
+\item \textbf{Problem 6.3(a).}
+  Strengthen the claim and prove by induction for $n\ge 1$:
+  \begin{enumerate}[(a)]
+  \item The sum of the first $n$ odd numbers is a square.
+    [Hint: Strengthen to a specific square.]
+  \end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 6.8.}
+  Prove $n^7<2^n$ for $n\ge 37$.
+  (a)~Use induction.
+  (b)~Use leaping induction.
+
+\vspace{0.1in}
+
+\item \textbf{Problem 6.15.}
+  Prove that there are $2^{\lceil n/2\rceil}$ distinct $n$-bit binary palindromes
+  (strings that equal their reversal).
+
+\vspace{0.1in}
+
+\item \textbf{Problem 6.32.}
+  We are back in $L$-tile land.
+  \begin{enumerate}[(a)]
+  \item This time, the potted plant needs more room than just one square.
+    For $n\ge 1$, a $2^n\times 2^n$ grid-patio is missing a (large) $2\times 2$ square
+    in a corner as shown in the figure.
+    Prove that the remainder of the patio can be $L$-tiled, for $n\ge 1$.
+  \item We are no longer sure what the size of the potted plant is.
+    The size may be $2^k\times 2^k$, and so a $2^k\times 2^k$ square
+    will be missing from the corner of the $2^n\times 2^n$ grid-patio.
+    Prove that the remainder of the patio can always be $L$-tiled,
+    for $k\ge 1$ and $n\ge k$.
+    [Hint: Tinker: try $k=2$; $n=3$ and $k=2$; $n=4$ to figure out what is going on.]
+  \end{enumerate}
+
+\newpage
+
+\item \textbf{*Problem 6.43.}
+  A sliding puzzle is a grid of 9 squares with 8 tiles.
+  The goal is to get the 8 tiles into order (the target configuration).
+  A move slides a tile into an empty square.
+  Below, we show first a row move, then a column move.
+
+  Prove that no sequence of moves produces the target configuration.
+  [Hint: The tiles form a sequence going left to right, top to bottom.
+  An inversion is a pair that is out of order.
+  Prove by induction that the number of inversions stays odd.]
+
+\vspace{0.1in}
+
+\item \textbf{Problem 7.3.}
+  Give a recursive definition of the function $f(n)=n!\times 2^n$, where $n\ge 1$.
+
+\vspace{0.1in}
+
+\item \textbf{Problem 7.4(a-c).}
+  Guess a formula for $A_n$ and prove it by induction.
+  \begin{enumerate}[(a)]
+  \item $A_0=0$ and $A_n=A_{n-1}+1$ for $n\ge 1$.
+  \item $A_1=1$, $A_2=2$, and $A_n=A_{n-1}+2A_{n-2}$ for $n\ge 2$.
+  \item $A_0=1$; $A_1=2$; $A_n=2A_{n-1}-A_{n-2}+2$ for $n\ge 2$.
+    [Hint: Method of differences.]
+  \end{enumerate}
+
+\end{itemize}
+
+\end{document}
