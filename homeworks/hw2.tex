@@ -206,11 +206,11 @@ If any typos exist below, please use the textbook description.
   \end{itemize}
   \subsubsection*{(d)~Real Numbers}
   \begin{itemize}
-    \item Closed Under Addition - Sum of two rational numbers will always be another rational number
-    \item Closed Under Subtraction - Difference of two rational numbers will always be another rational number
-    \item Closed Under Multiplication - Product of two rational numbers will always be another rational number 
-    \item Closed Under Division - Quotient of two rational numbers will always be another rational number
-    \item Not Closed Under Exponentiation - A rational number to the power of another rational number will not always result in another rational number (i.e., \(\left(2\right)^{\frac{1}{2}} = \sqrt{2}\))
+    \item Closed Under Addition - Sum of two real numbers will always be another real number
+    \item Closed Under Subtraction - Difference of two real numbers will always be another real number
+    \item Closed Under Multiplication - Product of two real numbers will always be another real number 
+    \item Closed Under Division - Quotient of two real numbers will always be another real number
+    \item Closed Under Exponentiation - A real number to the power of another real number will always result in another real number
   \end{itemize}
 
 \vspace{0.1in}
@@ -223,6 +223,40 @@ If any typos exist below, please use the textbook description.
   \item 3 divides $n-2\imp n$ is not a perfect square.
   \item If $p>2$ is prime, then $p^2+1$ is composite.
   \end{enumerate}
+
+  \subsection*{(k) P(x) : (p)3 divides $n-2\imp n$ (q)is not a perfect square.}
+  
+  Claim : If 3 divides n - 2, then n is not a perfect square
+
+  Contrapositive: Assume that n is a perfect square, then 3 does not divide n - 2
+
+  If n is a perfect square, then n = \(k^2\) for some $k\in\Z$ .
+
+  Now consider n - 2 in (3 divides n - 2), plug in \(k^2\) for n
+
+  n - 2 = \( k^2\) - 2
+
+  Now we want to show that 3 does not divide \(k^2\) - 2. In order for \(k^2\) to be divisble by 3, \((k^2-2)\%3\) has to equal 0. Consider 3 cases, k=0, k=1, and k=2.
+
+  k = 0, \(k^2 = 0\), \(k^2-2=-2\), \(-2 \% 3 = 1\), remainder of 1 when divided by 3, not divisible by 3
+  
+  k = 1, \(k^2 = 1\), \(k^2-2=-1\), \(-1 \% 3 = 2\), remainder of 2 when divided by 3, not divisibly by 3
+
+  k = 2, \(k^2 = 4\), \(k^2-2=2\), \(2 \% 3 = 1\), remainder of 1 when divided by 3, not divisible by 3
+
+  In all cases, we see that \((k^2-2)\%3\) does not equal to 0, none of these cases are divisible by 3
+
+  We have proven that when n is a perfect square, then 3 does not divide n - 2, making 3 divides n - 2 false
+
+  Thus we have shown that p is false and P(x) is true.
+
+  \subsection*{(l) P(x) : (p) If p $>$ 2 is prime, (q) then \(p^2+1\) is composite}
+  
+  Contrapositive: Assume that \(p^2+1\) is not composite, then p $>$ 2 is not prime or \(p \leq 2\) 
+
+  When \(p^2+1\) is not composite, it is either prime or a negative number, let's consider both cases
+
+  
 
 \vspace{0.1in}
 
@@ -282,6 +316,33 @@ If any typos exist below, please use the textbook description.
   \setcounter{enumi}{3}
   \item $3^n>n^2$.
   \end{enumerate}
+
+  \subsection*{(d) P(n) : \(3^n > n^2\)}
+  We use induction prove $\forall(n \geq 1)$ : P(n)
+  
+  [Base Case] $P(1) = 3^1 > 1^2 = 3 > 1$ which is True
+
+  [induction Step] Prove $P(n) \imp P(n+1)$ for all n $\geq$ 1 
+
+  Specifically, if $3^n > n^2$, then $3^{n+1} > (n+1)^2$
+
+  Now we want to prove $3^{n+1} > (n+1)^2$
+
+  By Induction Assumption, we know that $3^n > n^2$
+
+  Which allows us to multiply both sides by 3, giving us $3^{n+1} > 3n^2$, looking at the LHS, we can subsitute it in our next inequality
+
+  Simplify $(n+1)^2$ gives us $ n^2 + 2n +1$
+  
+  Subsitute everything into this next inequality so we can compare, we get
+
+  $3^{n+1} > 3n^2 > n^2 + 2n + 1$
+
+  We know that $3k^2$ is greater than the highest term in the most RHS's quadratic $n^2$ and that $3^{n+1} > 3n^2$ due to the induction hypothesis. 
+
+  We can rewrite the inequality as $3^{n+1} > n^2 + 2n + 1$ which is equal/the same to what we wanted to prove, $3^{n+1} > (n+1)^2$, up in the 4th line
+  
+  Thus, by induction, we have proved P(n+1) to be true, making P(n) to be true for all cases $n \geq 1$
 
 \vspace{0.1in}
 
