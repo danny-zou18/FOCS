@@ -505,6 +505,61 @@ If any typos exist below, please use the textbook description.
   An inversion is a pair that is out of order.
   Prove by induction that the number of inversions stays odd.]
 
+  1. [Base Case] Starting out, there is an odd number of inversions (i.e., (8,7) as the number 8 should be after 7)
+
+  2. [Induction Hypothesis] Assume $Move_k$ is odd, prove $Move_{k+1}$ is odd
+
+  3. [Induction Step] Let's consider two cases
+
+  Case 1 : Row moves
+
+  We can see that row moves always keeps the same number of inversions
+
+  If we define the grid as a set of numbers ex. 
+  
+  \{1, 2, 3, 4, \textunderscore, 6, 8, 5, 7\}
+
+  Here there are 3 inversions: (6,5), (8, 5), (8, 7)
+
+  And no matter if we move the 4 to the right, or 6 to the left, the order stays the same
+  and thus, so do the inversions.
+
+  Case 2 : Column moves
+
+  With column moves, there are 2 possiblities, either going up, or down
+
+  Thinking of the grid as a set (i.e., \{1, 2, 3, 4, \textunderscore, 6, 8, 5, 7\})
+
+  It makes it clear that these two possibilties both make the current number jump over two indexes in the set
+
+  This can either be two directions up, or down, but the resulting inversion count changes, depends on the numbers involved 
+
+  Because of this, there are 3 cases that we must consider:
+
+  Case 2.1 : Increases inversion count by 2
+
+  If you jump down and the two values you jump over are greater than the jumping value, or
+  when you are jumping up, and the two values you jump over are less than the jumping value, then the inversion count will increase by two.
+
+  Ex. \{1, \textunderscore, 3, 4, 2, 6, 8, 5, 7\} Inversions now include (3,2) (4,2)
+
+  Case 2.2 : Decreases inversion count by 2
+
+  This is the opposite of the above example
+  
+  If you jump up and the two values you jump over are greater than the jumping value, or
+  when you are jumping down, and the two values you jump over are less than the jumping value, then the inversion count will decrease by two.
+
+  Ex. if we revert the previous example
+  
+  \{1, 2, 3, 4, \textunderscore, 6, 8, 5, 7\} Inversions now do not include (3,2) (4,2)
+
+  Case 2.3 : Inversion count remains the same
+
+  If you jump either direction over 1 value that is greater, and 1 value that is less, the inversion count will remain the same
+
+  [Conclusion] Thus, since the inversion count starts off odd, and the only possible moves involves either changing the value by 2 or keeping it the same, the value of the inversion count will always be odd. 
+
 \vspace{0.1in}
 
 \item \textbf{Problem 7.3.}
