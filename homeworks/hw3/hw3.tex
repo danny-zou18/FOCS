@@ -214,6 +214,14 @@ $A_{n+1} = \frac{(10(n+1))(n(10^{n-1} + 10^{n-2} + ...+ 10^0))}{n} + n + 1$
 
 $A_{n+1} = (10(n+1))(10^{n-1} + 10^{n-2} + ...+ 10^0) + n + 1$
 
+$A_{n+1} = (n+1)(10^{n} + 10^{n-1} + ...+ 10^0) + n + 1$
+
+$A_{n+1} = (n+1)[(10^{n} + 10^{n-1} + ...+ 10^1) + 1]$
+
+$A_{n+1} = (n+1)(10^{n} + 10^{n-1} + ...+ 10^1 + 1)$
+
+$A_{n+1} = (n+1)(10^{n} + 10^{n-1} + ...+ 10^1 + 10^0)$
+
 $A_{n+1} = (n+1)(10^{n} + 10^{n-1} + ...+ 10^0)$
 
 Thus, $A_{n+1} = (n+1)(10^{n} + 10^{n-1} + ...+ 10^0)$, as was to be shown
@@ -288,10 +296,44 @@ $ F_n =
   1 & \text{if } n = 1 \\
   1 & \text{if } n = 2 \\
   F_{n-1} + F_{n-2} & \text{if } n > 2
-
-  
 \end{cases}
 $
+
+\vspace*{0.1in}
+
+Define claim P(n), where $F_{3n}$ is even
+
+P(n) : $F_{3n}$ is even
+
+Now we want to prove P(n) to be true for all n $\geq$ 1
+
+Proof by Induction
+
+[Base Case] For n = 1, $F_1 = 1 \ F_2 = 1 \ F_3 = F_1 + F_2 \ F_3 = 1 + 1 = 2$ which is even, True 
+
+[Induction Step] Assume that P(n) is true, then we must prove that P(n) $\imp$ P(n+1) for all n $>$ 1
+
+P(n+1) = $F_{3(n+1)} = F_{3n + 3}$
+
+Plug into $F_n = F_{n-1} + F_{n-2}$
+
+$F_{3n+3} = F_{3n+2} + F_{3n + 1}$
+
+$F_{3n+2} = F_{3n+1} + F{3n}$
+
+Subsitute, we get $F_{3n+3} = F_{3n+1} + F_{3n+1} + F_{3n}$
+
+$F_{3n+3} = 2 * F_{3n+1} + F_{3n}$
+
+We know from our induction hypothesis that $F_{3n}$ is even.
+
+$2*F_{3n+1}$ is also even because it is a multiple of 2.
+
+The sum of two even numbers will always come out to be even, thus proving 
+
+$F_{3n+3} = 2 * F_{3n+1} + F_{3n}$ to be even
+
+Thus, we have proven our claim P(n) to be true for all n $>$ 1, proving that every third Fibonacci number $F_{3n}$ is even.
 
 \vspace{0.1in}
 
