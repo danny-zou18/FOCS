@@ -179,6 +179,47 @@ In each case, $A_1=1$ and for $n>1$:
 \item $A_n=10nA_{n-1}/(n-1)+n$.
 \end{enumerate}
 
+$ A_n = 
+\begin{cases}
+  1 & \text{if } n = 1 \\
+  \frac{10nA_{n-1}}{(n-1)} + n & \text{if } n > 1
+\end{cases}
+$
+
+$A_2 = \frac{20(1)}{1} + 2 = 22 = 2(10^1 + 1)$
+
+$A_3 = \frac{30(22)}{2} + 3 = 333 = 3(10^2 + 10^1+ 1)$
+
+$A_4 = \frac{40(333)}{3} + 4 = 4444 = 4(10^3 + 10^2 + 10^1 + 1)$
+
+$A_5 = \frac{50(4444)}{4} + 5 = 55555 = 5(10^4 + 10^3 + 10^2 + 10^1 + 1)$
+
+And so on\dots
+
+Observe that A(n) = $n(10^{n-1} + 10^{n-2} + ... + 10^0)$
+
+Define claim P(n) : A(n) = $n(10^{n-1} + 10^{n-2} + ...+ 10^0)$ for all n $>$ 1
+
+We prove by strong induction that P(n) is true for n $>$ 1
+
+[Base Case] A(1) = $1(10^{1-1}) = 1(1) = 1$ $A_1 = 1$ --- 1=1 True
+
+[Induction Step] We prove $P(1) \land\ P(2) \land\ ... \land\ P(n) \imp P(n+1) $ for n $>$ 1
+
+We must prove that $A_{n+1}$= $(n + 1)(10^{n} + 10^{n-1} + ... + 10^0)$
+
+LHS : $A_{n+1} = \frac{10(n+1)}{n}(A_n)+ (n + 1)$
+
+$A_{n+1} = \frac{(10(n+1))(n(10^{n-1} + 10^{n-2} + ...+ 10^0))}{n} + n + 1$
+
+$A_{n+1} = (10(n+1))(10^{n-1} + 10^{n-2} + ...+ 10^0) + n + 1$
+
+$A_{n+1} = (n+1)(10^{n} + 10^{n-1} + ...+ 10^0)$
+
+Thus, $A_{n+1} = (n+1)(10^{n} + 10^{n-1} + ...+ 10^0)$, as was to be shown
+
+By induction, P(n) is true for all n $>$ 1.
+
 \vspace{0.1in}
 
 \item \textbf{*Problem 7.13(a).}
@@ -190,6 +231,49 @@ Guess and prove a formula for $M_n$.
 Tinker, tinker.
 \end{enumerate}
 
+$ M_n = 
+\begin{cases}
+  2 & \text{if } n = 1 \\
+  aM_{n-1}^2 & \text{if } n > 1
+\end{cases}
+$
+
+$M_2 = a(M_1^2) = a(2^2) = a(2^{2^1})$
+
+$M_3 = a(M_2^2) = a((4a)^2) = 16a^3 = 2^4(a^3) = 2^{2^2}(a^3)$
+
+$M_4 = a(M_3^2) = a((16a^3)^2) = 256a^7 = 2^8(a^7) = 2^{2^3}(a^7)$
+
+$M_5 = a(M_4^2) = a((256a^7))^2 = 65536a^15 = 2^{16}(a^{15}) = 2^{2^4}(a^{15})$
+
+And so on \dots
+
+We observe that M(n) = $2^{2^{n-1}} * a^{2^{n-1} - 1} $
+
+Define claim P(n) : M(n) = $2^{2^{n-1}} * a^{2^{n-1} - 1} $ for all n $>$ 1
+
+We prove by strong induction that P(n) is true for n $>$ 1
+
+[Base Case] M(1) = $2^1 * a^{1-1} = 2 $ $M_1 = 2$ --- 2=2 True
+
+[Induction Step] We prove $P(1) \land P(2) \land ... \land P(n) \imp P(n+1) for n > 1 $
+
+We must prove that $M_{n+1} = 2^{2^{n}} * a^{2^{n} - 1}$
+
+LHS: $M_{n+1} = aM_{n}^2$
+
+$M_{n+1} = a(2^{2^{n-1}}*a^{2^{n-1}-1})^2$
+
+$M_{n+1} = a(2^{2 * 2^{n-1}}*a^{2 * (2^{n-1}-1)})$
+
+$M_{n+1} = a(2^{2^n} * a^{2^n - 2})$
+
+$M_{n+1} = 2^{2^n} * a^{2^n-1}$
+
+Thus, $M_{n+1} = 2^{2^n} * a^{2^n-1}$, as was to be shown
+
+By induction, P(n) is true for all n $>$ 1.
+
 \vspace{0.1in}
 
 \item \textbf{*Problem 7.19(d).}
@@ -198,6 +282,16 @@ Recall the Fibonacci numbers: $F_1,F_2=1$; and, $F_n=F_{n-1}+F_{n-2}$ for $n>2$.
 \setcounter{enumi}{3}
 \item Prove that every third Fibonacci number, $F_{3n}$, is even.
 \end{enumerate}
+
+$ F_n = 
+\begin{cases}
+  1 & \text{if } n = 1 \\
+  1 & \text{if } n = 2 \\
+  F_{n-1} + F_{n-2} & \text{if } n > 2
+
+  
+\end{cases}
+$
 
 \vspace{0.1in}
 
