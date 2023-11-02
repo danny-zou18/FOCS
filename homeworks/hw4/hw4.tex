@@ -1,0 +1,361 @@
+\documentclass[11pt]{article}
+\usepackage{datetime}
+\usepackage{color,array,graphics}
+\usepackage{enumerate}
+\usepackage[pdftex, colorlinks, linkcolor=red,citecolor=red,urlcolor=blue]{hyperref}
+\usepackage{ulem}
+
+\setlength{\parindent}{0cm}
+
+\setlength{\parskip}{0.3cm plus4mm minus3mm}
+
+\textwidth  6.5in
+\oddsidemargin +0.0in
+\evensidemargin +0.0in
+\textheight 9.0in
+\topmargin -0.5in
+
+\usepackage{upquote,textcomp}
+\usepackage{amssymb,amsmath,amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\newcommand{\vect}[1]{{\bf #1}}                 %for bold chars
+\newcommand{\vecg}[1]{\mbox{\boldmath $ #1 $}}  %for bold greek chars
+\newcommand{\matx}[1]{{\bf #1}}
+
+\def\OR{\vee}
+\def\AND{\wedge}
+\def\imp{\rightarrow}
+\def\math#1{$#1$}
+
+\DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+\DeclareMathSymbol{\N}{\mathbin}{AMSb}{"4E}
+\DeclareMathSymbol{\Z}{\mathbin}{AMSb}{"5A}
+\DeclareMathSymbol{\R}{\mathbin}{AMSb}{"52}
+\DeclareMathSymbol{\Q}{\mathbin}{AMSb}{"51}
+\DeclareMathSymbol{\I}{\mathbin}{AMSb}{"49}
+\DeclareMathSymbol{\C}{\mathbin}{AMSb}{"43}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+\large
+\textbf{CSCI 2200 --- Foundations of Computer Science (FoCS) \\
+Homework 4 (document version 1.1)}
+\end{center}
+
+\section*{Overview}
+\begin{itemize}
+\item This homework is due by 11:59PM on Thursday, November~2
+\item You may work on this homework in a group of up to four students;
+  unlike recitation problem sets,
+  \textbf{your teammates may be in any section}
+\item You may use at most \textbf{two} late days on this assignment
+\item Please start this homework early and ask questions during
+  office hours and at your November~1 recitation section;
+  also ask questions on the Discussion Forum
+\item Please be concise in your written answers;
+  even if your solution is correct, if it is not well-presented,
+  you may still lose points
+\item You can type or hand-write (or both) your solutions
+  to the required graded problems below;
+  \textbf{all work must be organized in one PDF that lists
+  all teammate names}
+\item You are strongly encouraged to use LaTeX, in particular for
+  mathematical symbols;
+  see the corresponding \verb+hw1.tex+ file as a starting point
+  and example
+\end{itemize}
+
+%\vspace{0.2in}
+
+\section*{Grading}
+\begin{itemize}
+\item For each assigned problem, a grade of 0, 1, or 2 is assigned
+  as follows:
+  0 indicates no credit;
+  1 indicates half credit;
+  and 2 indicates full credit
+\item No credit is assigned if a problem is not attempted
+  or minimal work/progress is shown
+\item Half credit is assigned if a strong attempt was made
+  toward a solution and/or only part of the problem was attempted or solved
+\item Full credit is assigned for a perfect or nearly perfect solution,
+  i.e.,~only one or two minor typos/mistakes at most
+\end{itemize}
+
+\vspace{0.2in}
+
+%\begin{center}
+%\includegraphics[scale=0.4]{math-bitmoji.png}
+%\end{center}
+
+\newpage
+\section*{Warm-up exercises}
+The problems below are good practice problems to work on.
+Do not submit these as part of your homework submission.
+\textbf{These are ungraded problems.}
+
+\begin{multicols}{2}
+\begin{itemize}
+
+\item \textbf{Problem 8.12(a-c).}
+\item \textbf{Problem 9.8(a).}
+\item \textbf{Problem 9.20.}
+\item \textbf{Problem 9.23(a).}
+\item \textbf{Problem 9.28.}
+\item \textbf{Problem 9.43.}
+\item \textbf{Problem 9.69-9.72.}
+\item \textbf{Problem 11.3.}
+\item \textbf{Problem 11.10.}
+\item \textbf{Problem 11.13.}
+\item \textbf{Problem 11.15(a,c-d).}
+
+\end{itemize}
+\end{multicols}
+
+\section*{Graded problems}
+The problems below are required and will be graded.
+\begin{itemize}
+
+\item \textbf{*Problem 9.23(b).}
+\item \textbf{*Problem 9.37. (v1.1)~See correction below.}
+\item \textbf{*Problem 9.39.}
+\item \textbf{*Problems 11.5 and 11.15(b).}
+\item \textbf{*Problem 11.11.}
+\item \textbf{*Problem 11.17.}
+\item \textbf{*Problem 11.27.}
+
+\end{itemize}
+
+As you might not have the required textbook yet,
+all of the above problems (both graded and ungraded)
+are transcribed in the pages that follow.
+
+Graded problems are noted with an asterisk~(*).
+
+If any typos exist below, please use the textbook description.
+
+\newpage
+\begin{itemize}
+
+\item \textbf{Problem 8.12(a-c).}
+A set $\mathcal{P}$ of parenthesis strings has a recursive definition (right).
+\begin{enumerate}[(1)]
+\item $\varepsilon\in\mathcal{P}$
+\item $x\in\mathcal{P}\imp [x]\in\mathcal{P}$ \\
+  $x,y\in\mathcal{P}\imp xy\in\mathcal{P}$
+\end{enumerate}
+\begin{enumerate}[(a)]
+\item Determine if each string is in $\mathcal{P}$ and
+  give a derivation if it is in $\mathcal{P}$. \\
+  (i)~$[[[]]]][$\ \ \ \ (ii)~$[][[]][[]]$\ \ \ \ (iii)~$[[][][]$
+\item Give two derivations of $[][][[]]$ whose steps are not a simple reordering of each other.
+\item Prove by structural induction that every string in $\mathcal{P}$ has even length.
+\end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{Problem 9.8(a).}
+Estimate these sums.
+\begin{enumerate}[(a)]
+\item $\displaystyle \sum_{i=1}^{10} \sum_{j=1}^{20} 2^{i+j}$
+\end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{Problem 9.20.}
+Prove or disprove:
+\begin{enumerate}[(a)]
+%\begin{multicols}{4}
+\item $\displaystyle\frac{n^3+2n}{n^2+1}\in\Theta(n)$
+\item $(n+1)!\in\Theta(n!)$
+\item $n^{1/n}\in\Theta(1)$
+\item $(n!)^{1/n}\in\Theta(n)$
+%\end{multicols}
+\end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{Problem 9.23(a).}
+Prove by contradiction: (a)~$n^3\not\in O(n^2)$
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 9.23(b).}
+Prove by contradiction: (b)~$2^n\not\in\Theta(3^n)$
+
+\vspace*{0.15in}
+
+Let us assume $2^n \in\Theta(3^n)$
+
+By definition, if a function is in $\Theta(3^n)$, it means that it is both in $\Omega(3^n)$(Lower Bound) and $O(3^n)$(Upper Bound)
+
+From this, we can define $2^n \in \Omega(3^n)$ and $2^n \in O(3^n)$ 
+
+From the lower bound ($\Omega(3^n)$), there exists a $n_0 \in \mathbb{N}$ and a constant c $>$ 0 such that 
+
+$c * 3^n \leq 2^n \: \: \forall \: \: n \geq n_0 $, now we can simplify
+
+$c \leq \frac{2^n}{3^n} \: \: \forall \: \: n \geq 0$
+
+to get $c \leq (\frac{2}{3})^n \: \: \forall \: \: n \geq 0$ 
+
+but for all $c > 0$, we see that there exists a $k_0$ such that $(\frac{2}{3})^k \leq c \: \: \forall \: \: k \geq k_0$, which contradicts the inequality above
+
+From this contradiction, we see that $2^n \not\in \Omega(3^n)$
+
+Therefore, because the function is not in the lower bound of $\Omega(3^n)$, we have proven that $2^n \in \Theta(3^n)$ is false, in turn proving that $2^n \not\in \Theta(3^n)$ is true
+
+\vspace{0.1in}
+
+\item \textbf{Problem 9.28.}
+For recurrence $f(0)=1$; $f(n)=nf(n-1)$, compare $f(n)$ with (a)~$2^n$ (b)~$n^n$.
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 9.37.}
+A recursive algorithm has a runtime $T(n)$ that depends only on $n$, the input of size.
+$T(1)=1$ and for an input-size $n$, the algorithm solves two problems of size $\lfloor n/2\rfloor$
+and does extra work of $n$ to get the output.
+(\textbf{(v1.1)}~Note ``ceiling'' was corrected to ``floor'' here.)
+\begin{enumerate}[(a)]
+\item Argue that $T(n)$ satisfies the recursion $T(n)=2T(\lfloor n/2 \rfloor)+n$.
+
+\vspace*{.1in}
+
+To show that T(n) satisfies the recursion $T(n) = 2T(\lfloor n/2 \rfloor)+n$, we can prove by induction
+
+[Base Case] $2T(\lfloor 1/2 \rfloor) + 1$ = $2T(0) + 1 = 2 + 1 = 3$, satisfies the recursion when T(1) = 1  
+
+
+
+
+
+\item Prove $T(n)\in\Theta(n\log n)$.\\
+$[$Hint: Induction to show $n\log_2 n\le T(n)\le2n\log_2 n$ for $n=2^k$ and monotonicity.$]$
+\end{enumerate}
+
+\newpage
+
+\item \textbf{*Problem 9.39.}
+Use the rule of thumb for nested sums on the bottom of page 118
+(i.e.,~You can quickly determine the growth rate of a nested sum using:
+growth rate of nested sum~$=$~number of nestings~$+$~order of the summand)
+to obtain the asymptotic growth rate for the following sums, and verify by exact computation.
+If the rule does not work, why not?
+\begin{multicols}{2}
+\begin{enumerate}[(a)]
+\item $\displaystyle \sum_{i=1}^n \sum_{j=1}^i j$
+\item $\displaystyle \sum_{i=1}^n ( i^2 + \sum_{j=1}^n j )$
+\item $\displaystyle \sum_{i=1}^n \sum_{j=1}^n \sum_{k=1}^n (i^2+ijk)$
+\item $\displaystyle \sum_{i=1}^n \sum_{j=1}^{i^2} j$
+\end{enumerate}
+\end{multicols}
+
+\vspace{0.1in}
+
+%\item \textbf{Problem 9.43.}
+%
+%\vspace{0.1in}
+
+%\item \textbf{Problem 9.69-9.72.}
+%
+%\vspace{0.1in}
+
+\item \textbf{Problem 11.3.}
+Give the degree sequences of $K_{n+1}$, $K_{n,n}$, $L_n$, $C_n$, $S_{n+1}$, and $W_{n+1}$.
+
+\vspace{0.1in}
+
+\item \textbf{*Problems 11.5 and 11.15(b).}
+A graph is regular if every vertex has the same degree.
+Which of these graphs are regular?
+\begin{enumerate}[(a)]
+\begin{multicols}{7}
+\item $K_6$
+\item $K_{4,5}$
+\item $K_{5,5}$
+\item $L_6$
+\item $S_6$
+\item $W_4$
+\item $W_5$
+\end{multicols}
+\end{enumerate}
+A graph is $r$-regular if every vertex has the same degree~$r$. Show:
+\begin{enumerate}[(a)]
+\setcounter{enumi}{1}
+\item If $r$ is odd and $n$ is odd, there is no $r$-regular graph with $n$ vertices.
+\end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{Problem 11.10.}
+Give graphs with these degree distributions, or explain why you can't.
+Verify $2|E|=\displaystyle\sum_{i=1}^n \delta_i$.
+\begin{enumerate}[(a)]
+\begin{multicols}{4}
+\item $[5,3,3,2,1]$
+\item $[3,2,1,1,1]$
+\item $[3,3,2,1]$
+\item $[3,3,3,3,3]$
+\item $[3,3,3,3,3,3]$
+\item $[3,3,2,2,2]$
+\item $[4,4,4,4,4]$
+\item $[4,4,3,2,1]$
+\item $[4,3,3,2,2]$
+\item $[3,3,3,2,2]$
+\item $[3,3,3,3,2]$
+\item $[5,3,2,2,2]$
+\end{multicols}
+\end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 11.11.}
+In a graph only the two vertices $u,v$ have odd degree.
+Prove there is a path from $u$ to $v$.
+
+\vspace{0.1in}
+
+\item \textbf{Problem 11.13.}
+Compute the number of edges in the following graphs:
+\begin{enumerate}[(a)]
+\begin{multicols}{7}
+\item $K_n$
+\item $K_{n,\ell}$
+\item $W_n$
+\end{multicols}
+\end{enumerate}
+
+\newpage
+
+\item \textbf{Problem 11.15(a,c-d).}
+A graph is $r$-regular if every vertex has the same degree~$r$. Show:
+\begin{enumerate}[(a)]
+\item If $r$ is even and $n>r$, there is an $r$-regular graph with $n$ vertices. (Tinker!)
+\setcounter{enumi}{2}
+\item If $r$ is odd and $n>r$ is even, there is an $r$-regular graph with $n$ vertices.
+\item An $r$-regular graph with $4k$ vertices must have an even number of edges.
+\end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 11.17.}
+A graph $G$ has $n$ vertices.
+\begin{enumerate}[(a)]
+\item What is the maximum number of edges $G$ can have and not be connected? Prove it.
+\item What is the minimum number of edges $G$ can have and be connected? Prove it.
+\end{enumerate}
+
+\vspace{0.1in}
+
+\item \textbf{*Problem 11.27.}
+Every vertex degree in a graph is at least 2.
+Prove that there is at least one cycle.
+
+\end{itemize}
+
+\end{document}
